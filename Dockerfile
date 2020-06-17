@@ -87,7 +87,8 @@ RUN wget https://github.com/swoft-cloud/swoft-cli/releases/download/v0.2.0/swoft
   && chmod a+x /usr/local/bin/swoftcli
 
 WORKDIR /var/www/swoft
-EXPOSE 18306 18307 18308
+# EXPOSE 18306 18307 18308
+EXPOSE 17306
 
 # ENTRYPOINT ["php", "/var/www/swoft/bin/swoft", "http:start"]
 CMD ["php", "/var/www/swoft/bin/swoft", "http:start"]

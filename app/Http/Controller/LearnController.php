@@ -33,12 +33,12 @@ class LearnController{
      */
     public function index(): array
     {
-        Co::create(function () {
-            echo date('Y-m-d H:i:s');
-            Co::sleep(5);
-            Log::info('swoft go');
-        });
-        \Swoft::trigger('event.demo');
+//        Co::create(function () {
+//            echo date('Y-m-d H:i:s');
+//            Co::sleep(5);
+//            Log::info('swoft go');
+//        });
+        \Swoft::trigger('event.demosss');
         return ['item0', 'item1'];
     }
 

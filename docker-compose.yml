@@ -5,16 +5,16 @@ services:
 #    for local develop
 #    command: php -S 127.0.0.1:13300
     container_name: swoft-srv
-#    command: php -S 127.0.0.1:13300
+    command: php -S 127.0.0.1:13300
     environment:
       - APP_ENV=dev
       - TIMEZONE=Asia/Shanghai
     restart: always
-#    depends_on:
+    depends_on:
 #      - mysql
-#      - redis
+      - redis
     ports:
-      - "18306:18306"
+      - "17306:17306"
 #      - "18307:18307"
 #      - "18308:18308"
     volumes:
@@ -35,11 +35,11 @@ services:
 #      - ./runtime/data/mysql:/var/lib/mysql
 #    restart: always
 
-#  redis:
-#    container_name: redis-srv
-#    image: redis:4-alpine
-#    ports:
-#      - "16379:6379"
-#    sysctls:
-#      net.core.somaxconn: 65535
-#    restart: always
+  redis:
+    container_name: redis-srv
+    image: redis
+    ports:
+      - "6379:6379"
+    sysctls:
+      net.core.somaxconn: 65535
+    restart: always

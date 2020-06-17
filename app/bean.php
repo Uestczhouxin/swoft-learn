@@ -41,7 +41,7 @@ return [
             // 'tcp' => bean('tcpServer'),
         ],
         'process'  => [
-            // 'monitor' => bean(\App\Process\MonitorProcess::class)
+//             'monitor' => bean(\App\Process\MonitorProcess::class)
             // 'crontab' => bean(CrontabProcess::class)
         ],
         'on'       => [
@@ -106,11 +106,23 @@ return [
     ],
     'redis'              => [
         'class'    => RedisDb::class,
-        'host'     => '127.0.0.1',
+        'host'     => 'redis-srv',
         'port'     => 6379,
         'database' => 0,
         'option'   => [
             'prefix' => 'swoft:'
+        ]
+    ],
+    'redis.pool'    => [
+        'class'       => Swoft\Redis\Pool::class,
+        'redisDb'     => bean('redis'),
+        'minActive'   => 10,
+        'maxActive'   => 20,
+        'maxWait'     => 0,
+        'maxWaitTime' => 0,
+        'maxIdleTime' => 60,
+        'option'   => [
+            'prefix' => env('URL_API_REDIS_PREFIX', 'swoft:'),
         ]
     ],
     'user'               => [
