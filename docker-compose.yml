@@ -4,7 +4,7 @@ services:
     image: swoft/swoft
 #    for local develop
 #    command: php -S 127.0.0.1:13300
-    container_name: swoft-srv
+    container_name: swoft-learn
     command: php -S 127.0.0.1:13300
     environment:
       - APP_ENV=dev
@@ -15,8 +15,8 @@ services:
       - redis
     ports:
       - "17306:17306"
-#      - "18307:18307"
-#      - "18308:18308"
+#      - "6380:6380"
+#      - "3307:3307"
     volumes:
        - ./:/var/www/swoft
 #       - ./:/var/www/swoft:delegated
@@ -24,22 +24,22 @@ services:
       # - ./runtime/ng-conf:/etc/nginx
       # - ./runtime/logs:/var/log
 
-#  mysql:
-#    image: mysql
-#    container_name: mysql-srv
-#    environment:
-#      - MYSQL_ROOT_PASSWORD=123456
-#    ports:
-#      - "13306:3306"
-#    volumes:
-#      - ./runtime/data/mysql:/var/lib/mysql
-#    restart: always
+  mysql:
+    image: mysql
+    container_name: mysql-learn
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+      - "3307:3307"
+    volumes:
+      - ./runtime/data/mysql:/var/lib/mysql
+    restart: always
 
   redis:
-    container_name: redis-srv
+    container_name: redis-learn
     image: redis
     ports:
-      - "6379:6379"
+      - "6380:6380"
     sysctls:
       net.core.somaxconn: 65535
     restart: always
