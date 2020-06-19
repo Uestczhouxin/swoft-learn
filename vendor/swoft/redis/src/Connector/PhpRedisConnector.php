@@ -166,7 +166,6 @@ class PhpRedisConnector implements ConnectorInterface
         if (version_compare(phpversion('redis'), '3.1.3', '>=')) {
             $parameters[] = $config['read_timeout'];
         }
-
         $result = $client->connect(...$parameters);
         if ($result === false) {
             throw new RedisException(

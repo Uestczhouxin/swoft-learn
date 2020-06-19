@@ -35,7 +35,7 @@ return [
     ],
     'httpServer'         => [
         'class'    => HttpServer::class,
-        'port'     => 18306,
+        'port'     => 17306,
         'listener' => [
             // 'rpc' => bean('rpcServer'),
             // 'tcp' => bean('tcpServer'),
@@ -63,8 +63,9 @@ return [
         // Add global http middleware
         'middlewares'      => [
             \App\Http\Middleware\FavIconMiddleware::class,
+            \App\Http\Middleware\UserAuthMiddleware::class,
             \App\Http\Middleware\JsonMiddleware::class,
-            \Swoft\Http\Session\SessionMiddleware::class,
+//            \Swoft\Http\Session\SessionMiddleware::class,
             // \Swoft\Whoops\WhoopsMiddleware::class,
             // Allow use @View tag
             \Swoft\View\Middleware\ViewMiddleware::class,
@@ -75,7 +76,7 @@ return [
     ],
     'db'                 => [
         'class'    => Database::class,
-        'dsn'      => 'mysql:dbname=test;host=mysql-learn:port=3307',
+        'dsn'      => 'mysql:dbname=test;host=mysql-learn:port=3306',
         'username' => 'root',
         'password' => '123456',
         'charset'  => 'utf8mb4',
@@ -90,7 +91,7 @@ return [
     'redis'              => [
         'class'    => RedisDb::class,
         'host'     => 'redis-learn',
-        'port'     => 6380,
+        'port'     => 6379,
         'database' => 0,
         'option'   => [
             'prefix' => 'swoft:'

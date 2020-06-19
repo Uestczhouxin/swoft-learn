@@ -11,6 +11,8 @@
 namespace App\Http\Controller;
 
 use App\Bean\DemoBean;
+use App\Bean\UserTokenBean;
+use Swoft\Bean\BeanFactory;
 use Swoft\Co;
 use Swoft\Http\Server\Annotation\Mapping\Controller;
 use Swoft\Http\Server\Annotation\Mapping\RequestMapping;
@@ -49,7 +51,15 @@ class LearnController{
      */
     public function get(): array
     {
-        return ['item0'];
+        $token = BeanFactory::getRequestBean(UserTokenBean::class, (string) Co::tid());
+        $userid = $token->getUser()->getUserid();
+        $content = 'start ' . $userid;
+        Co::sleep(mt_rand(500, 3000) / 1000);
+        $token = BeanFactory::getRequestBean(UserTokenBean::class, (string) Co::tid());
+        $userid = $token->getUser()->getUserid();
+        $content .= 'end ' . $userid . PHP_EOL;
+        echo $content;
+        return [$userid];
     }
 
     /**
