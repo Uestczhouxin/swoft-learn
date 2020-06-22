@@ -61,7 +61,7 @@ return [
     ],
     'httpDispatcher'     => [
         // Add global http middleware
-        'middlewares'      => [
+        'middlewares'     => [
             \App\Http\Middleware\FavIconMiddleware::class,
             \App\Http\Middleware\UserAuthMiddleware::class,
             \App\Http\Middleware\JsonMiddleware::class,
