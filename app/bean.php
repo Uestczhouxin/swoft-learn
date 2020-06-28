@@ -63,7 +63,7 @@ return [
         // Add global http middleware
         'middlewares'     => [
             \App\Http\Middleware\FavIconMiddleware::class,
-            \App\Http\Middleware\UserAuthMiddleware::class,
+//            \App\Http\Middleware\UserAuthMiddleware::class,
             \App\Http\Middleware\JsonMiddleware::class,
 //            \Swoft\Http\Session\SessionMiddleware::class,
             // \Swoft\Whoops\WhoopsMiddleware::class,
@@ -76,7 +76,7 @@ return [
     ],
     'db'                 => [
         'class'    => Database::class,
-        'dsn'      => 'mysql:dbname=test;host=mysql-learn:port=3306',
+        'dsn'      => 'mysql:dbname=swoft_learn;host=mysql-learn;port=3306',
         'username' => 'root',
         'password' => '123456',
         'charset'  => 'utf8mb4',
@@ -108,6 +108,9 @@ return [
         'option'   => [
             'prefix' => env('URL_API_REDIS_PREFIX', 'swoft:'),
         ]
+    ],
+    'jaeger' => [
+        'class' => \QL\QueryList::class,
     ],
 //    \App\Bean\DemoBean::class => [
 //        'class' => \App\Bean\DemoBean::class,

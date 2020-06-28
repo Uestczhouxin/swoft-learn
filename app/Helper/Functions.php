@@ -12,3 +12,8 @@ function user_func(): string
 {
     return 'hello';
 }
+
+function success($data, $msg = '', $code = 0): array
+{
+    return ['code' => $code, 'message' => $msg, 'data' => $data];
+}

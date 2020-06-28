@@ -34,7 +34,8 @@
     "swoft/limiter": "~2.0.0",
     "swoft/breaker": "~2.0.0",
     "swoft/crontab": "~2.0.0",
-    "swoft/session": "~2.0.0"
+    "swoft/session": "~2.0.0",
+    "jaeger/querylist": "^4.2"
   },
   "require-dev": {
     "swoft/swlib": "~2.0.0",

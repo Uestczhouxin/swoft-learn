@@ -22,8 +22,8 @@ class UserAuthMiddleware implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $auth = $request->getHeader('Auth')[0];
-        if (!is_numeric($auth)) {
+        $auth = $request->input('auth');
+        if (!$auth) {
             return context()->getResponse()->withAddedHeader('Content-Type', 'application/json')->withStatus('401')->withData([
                 'code' => 401,
                 'message' => 'Access denied',

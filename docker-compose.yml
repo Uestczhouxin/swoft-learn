@@ -31,6 +31,7 @@ services:
     volumes:
       - ./runtime/data/mysql:/var/lib/mysql
     restart: always
+    command: --default-authentication-plugin=mysql_native_password
 
   redis:
     container_name: redis-learn
